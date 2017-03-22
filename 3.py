@@ -176,10 +176,10 @@ def game_start(game_num) :
     print("Game #", game_num, " : 베팅 가능한 말은 ..")
     print (Text.KO.global_divider)
     for n in range(Horse.horse_count):
-        print(n+1,"번마: ", horse_names[n])
+        print(n+1,"번마: ", Horse.horse[n].name)
     print (Text.KO.global_divider)
     betting_start()
-    print ("베팅 방법은 'horse_number, money'를 적고 Enter를 입력하면 됩니다.")
+    input ("베팅 방법은 'horse_number, money'를 적고 Enter를 입력하면 됩니다.")
     print (Text.KO.global_divider)
 
 
