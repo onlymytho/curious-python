@@ -1,3 +1,7 @@
+# 1898570 방에서 400에러 뜨는 거 잡기
+# 방이 존재하는 범위로 돌렸는데, 가끔씩 데이터를 못 불러오는 경우에 대해 해결하기.
+# csv export까지 하는 프로그램으로 제작하기
+
 from bs4 import BeautifulSoup
 import urllib.request
 import html5lib
@@ -36,6 +40,7 @@ def run() :
             print ("Listing_name = "+ str(listing_name.string) + "\n---------------------------\n")
 
         room_id.append(i)
+        sleep(10)
     print (str(room_id) + "," + str(listing_names))
     b = datetime.now()
     c = b - a
