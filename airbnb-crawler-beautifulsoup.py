@@ -15,9 +15,12 @@ headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KH
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3'
        }
 
+
+rooms = []
+
 room_id = []
 listing_names = []
-rooms = []
+review_counts = []
 
 range_from = 1135581
 range_to = 1135584
@@ -38,21 +41,32 @@ def run() :
         soup = BeautifulSoup(data, 'lxml')
         body = soup.find('body')
         listing_name = body.find('div', id='listing_name')
-
-
+        review_count = body.find_all('div', string="후기")
+        #일단 None 문제를 떠나서... 반드시 reactid=60 에 후기가 있지 않았다... `후기`라는 단어가 들어간 태그를 찾는 방식으로 바꿔야 할 듯
+        if review_count != None:
+            review_count = review_count[0].string[3:6]
+        else:
+            review_count = 'null'
+        print (review_count)
         print ("\n* Room_id = "+str(i)+ "\nOriginal listing_name :" + str(listing_name))
 
+        # Append room_id
+        room_id.append(i)
+
+        # Append listing_names
         if listing_name == None:
             null = 'null'
             listing_names.append(null)
-            print ("Listing_name = "+ str(null) + "\n---------------------------\n")
+            print ("Listing_name = "+ str(null))
         else:
             listing_names.append(listing_name.string)
-            print ("Listing_name = "+ str(listing_name.string) + "\n---------------------------\n")
+            print ("Listing_name = "+ str(listing_name.string))
 
-        room_id.append(i)
+        # Append review_count
+        review_counts.append(review_count)
+        print ("review_count = "+ str(review_count) + "\n---------------------------\n")
 
-        rooms.append([room_id[n], listing_names[n]])
+        rooms.append([room_id[n], listing_names[n], review_counts[n]])
         csvWriter.writerow(rooms[n])
         n = n+1
 

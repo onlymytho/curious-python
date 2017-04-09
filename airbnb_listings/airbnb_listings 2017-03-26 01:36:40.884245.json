@@ -1,0 +1,7 @@
+{
+    "error_code": 400,
+    "error_type": "validation",
+    "error_message": "\uc694\uccad \ucc98\ub9ac \uc911\uc5d0 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4.",
+    "error_id": "5e445d850aed1395861692d0d1ebac5c",
+    "error_details": "_limit must be no more than 50"
+}

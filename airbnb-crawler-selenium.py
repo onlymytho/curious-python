@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 HOST = 'https://www.airbnb.co.kr/rooms/'
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(executable_path="/Users/onlymytho/python")
 
 def run() :
     for i in range(1135581, 1135581):
