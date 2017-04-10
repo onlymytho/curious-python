@@ -1,10 +1,7 @@
 # -*- coding:utf-8 -*-
 from slacker import Slacker
-
-from bs4 import BeautifulSoup
-import urllib.request
-import html5lib
 from datetime import datetime
+import urllib
 import time
 import JsonHandler
 
@@ -23,14 +20,19 @@ def scrap():
            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3'}
 
+
+    # Access to url
     print ("Scrapping is started.")
     request = urllib.request.Request(HOST,None,headers) #The assembled request
     data = urllib.request.urlopen(request).read()
 
-    d = JsonHandler.JsonHandler.URLParserJsonDict(url=HOST)
 
+    # Parse JSON
+    d = JsonHandler.JsonHandler.URLParserJsonDict(url=HOST)
     print ("Calling is finished.")
 
+
+    # Declare post attribute lists
     title = []
     link = []
     image = []
@@ -38,9 +40,12 @@ def scrap():
     clicks = []
     feed = JsonHandler.JsonHandler(d).getValue('feed')
 
-    print ("Selecting viraled posts...")
-    feed_selected = []
+
     # Select posts virality is high
+    print ("Selecting viraled posts...")
+
+    feed_selected = []
+
     for i in feed:
         if i['virality'] > 5000 :
             feed_selected.append(i)
@@ -48,11 +53,12 @@ def scrap():
             continue
     print (str(len(feed_selected)) + "posts are selected!")
 
-    print ("Ready to send to Slack")
+
     # Send to slack
+    print ("Ready to send to Slack")
     slack = Slacker(slack_token)
 
-    # 링크등을 포함한 메시지 보내기
+    # Send to slack : 각 요소들에 데이터를 연결
     attachments_dict = dict()
     num = 0
     for i in feed_selected :
@@ -65,9 +71,23 @@ def scrap():
         attachments_dict['mrkdwn_in'] = ["text", "pretext"]  # 마크다운을 적용시킬 인자들을 선택합니다.
         attachments = [attachments_dict]
 
+    # Send to slack : 각 요소들을 합쳐서 하나의 메시지로 전송
         slack.chat.post_message(channel="#newsfeed", text=None, attachments=attachments, as_user=False)
         print ("Post " + str(num) + " is sent.")
         num += 1
     print ("Finished to send to Slack! Check your slack :)")
 
-scrap()
+
+# {period_seconds}초마다 주기적으로 메시지 보내기
+period_seconds = 600
+
+while True:
+    print (datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
+    time.sleep(1)
+    if datetime.utcnow().second % period_seconds == 0:
+        scrap()
+    else:
+        continue
+
+
+# End
