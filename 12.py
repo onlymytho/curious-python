@@ -1,22 +1,30 @@
 
-# Zenpy accepts an API token
-creds = {
-    'email' : 'zendesk@vingle.net',
-    'token' : '38XqgKh2KHJl2NuP1KtzrJeZUkEUPlYd5gCI2CJu',
-    'subdomain': 'vinglehelp'
-}
+# url = 'https://vinglehelp.zendesk.com/api/v2/tickets/{ticket_id}/comments.json'
+# TOKEN = 'YLixcuvGNG0QRUJdSxKGaBQ5CW4vUuynj7a1YlAo'
 
-from zenpy import Zenpy
-import datetime
+# Command to get tickets from testers : curl -u zendesk@vingle.net/token:YLixcuvGNG0QRUJdSxKGaBQ5CW4vUuynj7a1YlAo https://vinglehelp.zendesk.com/api/v2/search.json?query=type:ticket tags:testers
 
-# Default
-zenpy_client = Zenpy(**creds)
+from JsonHandler import JsonHandler
+import io
+from datetime import datetime
+
+CONFIG_FILE="./testers_tickets.json"
 
 
-yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-today = datetime.datetime.now()
 
-test_start_day = '2017-03-09'
+testers_tickets = JsonHandler.FileOpenDict(CONFIG_FILE)
 
-for ticket in zenpy_client.search("tags:testers created_at>2017-03-09", type='ticket'):
-    print (ticket.description)
+a = ''
+for results in testers_tickets['results']:
+    if any(x for x in JsonHandler(results).getValue('tags') if 'Korean'):
+        a = a+(JsonHandler(results).getValue('description'))+','
+    else:
+        continue
+
+print ('\nFinished parsing.')
+
+export_file_name = 'testers_tickets/testers_tickets'+' '+str(datetime.now())+'.csv'
+with io.open(export_file_name, 'w', encoding='utf-8') as f:
+  f.write(a)
+
+print ('File Exported as ' + "'" + export_file_name + "'" + '\n')
