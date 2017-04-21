@@ -17,6 +17,7 @@ class JsonHandler(dict):
 
     def OpenFile(filepath) :
         f = open(filepath, 'r')
+        f = f.read()
         return f
 
     def OpenJsonFileConvertToDict(filepath) :
