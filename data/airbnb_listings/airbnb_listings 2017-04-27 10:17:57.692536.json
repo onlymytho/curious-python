@@ -1,0 +1,553 @@
+{
+    "search_results": [
+        {
+            "listing": {
+                "bathrooms": 1.0,
+                "bedrooms": 0,
+                "beds": 1,
+                "city": "",
+                "distance": null,
+                "extra_host_languages": [],
+                "id": 18393108,
+                "instant_bookable": true,
+                "is_business_travel_ready": false,
+                "is_family_preferred": false,
+                "is_new_listing": true,
+                "lat": 37.540370117593085,
+                "listing_tags": [],
+                "lng": 126.98588795966076,
+                "localized_city": "\uc11c\uc6b8",
+                "name": "Apartment with rootop in great itawaen area",
+                "neighborhood": "Yongsan",
+                "person_capacity": 2,
+                "picture_count": 4,
+                "picture_url": "https://a0.muscache.com/im/pictures/27d8fc06-143a-4636-b973-1367f4ae6ff4.jpg?aki_policy=large",
+                "primary_host": {
+                    "first_name": "Christine",
+                    "has_profile_pic": true,
+                    "id": 127404636,
+                    "picture_url": "https://a0.muscache.com/im/pictures/73ed84a5-13cf-495b-88ab-83e0ee9bbc06.jpg?aki_policy=profile_x_medium",
+                    "smart_name": "Christine",
+                    "thumbnail_url": "https://a0.muscache.com/im/pictures/73ed84a5-13cf-495b-88ab-83e0ee9bbc06.jpg?aki_policy=profile_small",
+                    "is_superhost": false
+                },
+                "property_type": "\uc544\ud30c\ud2b8",
+                "property_type_id": 1,
+                "public_address": "\uc11c\uc6b8, \uc11c\uc6b8, \ud55c\uad6d",
+                "reviews_count": 0,
+                "room_type": "\uc9d1 \uc804\uccb4",
+                "room_type_category": "entire_home",
+                "scrim_color": "#332115",
+                "star_rating": null,
+                "thumbnail_url": "https://a0.muscache.com/im/pictures/27d8fc06-143a-4636-b973-1367f4ae6ff4.jpg?aki_policy=small",
+                "user": {
+                    "first_name": "Christine",
+                    "has_profile_pic": true,
+                    "id": 127404636,
+                    "picture_url": "https://a0.muscache.com/im/pictures/73ed84a5-13cf-495b-88ab-83e0ee9bbc06.jpg?aki_policy=profile_x_medium",
+                    "smart_name": "Christine",
+                    "thumbnail_url": "https://a0.muscache.com/im/pictures/73ed84a5-13cf-495b-88ab-83e0ee9bbc06.jpg?aki_policy=profile_small",
+                    "is_superhost": false
+                },
+                "user_id": 127404636,
+                "xl_picture_url": "https://a0.muscache.com/im/pictures/27d8fc06-143a-4636-b973-1367f4ae6ff4.jpg?aki_policy=x_large",
+                "preview_encoded_png": "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAIAAADJUWIXAAAAS0lEQVQIHQFAAL//AcLDtuzm5Oro6/r8/KeZmgGapqkL9uff3d4BBALHwsMBa32BMRoM9O7r7e/p1tneAYGIiSMdGLu6uv379Pb29DwmKQHXoKKZAAAAAElFTkSuQmCC",
+                "picture_urls": [
+                    "https://a0.muscache.com/im/pictures/27d8fc06-143a-4636-b973-1367f4ae6ff4.jpg?aki_policy=large",
+                    "https://a0.muscache.com/im/pictures/2126fba2-a9d5-4fec-a344-16418fe6d720.jpg?aki_policy=large",
+                    "https://a0.muscache.com/im/pictures/fc73932e-26d8-41da-bbe1-deb02ce95c12.jpg?aki_policy=large",
+                    "https://a0.muscache.com/im/pictures/dab6f3ac-afeb-4ce3-9dfe-21ac7582da3b.jpg?aki_policy=large"
+                ],
+                "xl_picture_urls": [
+                    "https://a0.muscache.com/im/pictures/27d8fc06-143a-4636-b973-1367f4ae6ff4.jpg?aki_policy=x_large",
+                    "https://a0.muscache.com/im/pictures/2126fba2-a9d5-4fec-a344-16418fe6d720.jpg?aki_policy=x_large",
+                    "https://a0.muscache.com/im/pictures/fc73932e-26d8-41da-bbe1-deb02ce95c12.jpg?aki_policy=x_large",
+                    "https://a0.muscache.com/im/pictures/dab6f3ac-afeb-4ce3-9dfe-21ac7582da3b.jpg?aki_policy=x_large"
+                ]
+            },
+            "pricing_quote": {
+                "available": false,
+                "can_instant_book": true,
+                "check_in": null,
+                "check_out": null,
+                "guests": 2,
+                "guest_details": {
+                    "number_of_adults": 2,
+                    "number_of_children": 0,
+                    "number_of_infants": 0
+                },
+                "long_term_discount_amount_as_guest": 0,
+                "monthly_price_factor": null,
+                "price": null,
+                "rate": {
+                    "amount": 0,
+                    "amount_formatted": "\u20a90",
+                    "is_micros_accuracy": null,
+                    "currency": "KRW"
+                },
+                "rate_type": "nightly",
+                "rate_with_service_fee": {
+                    "amount": 0,
+                    "amount_formatted": "\u20a90",
+                    "is_micros_accuracy": null,
+                    "currency": "KRW"
+                },
+                "weekly_price_factor": null
+            },
+            "viewed_at": null
+        },
+        {
+            "listing": {
+                "bathrooms": 1.0,
+                "bedrooms": 0,
+                "beds": 4,
+                "city": "Jongno-gu",
+                "distance": null,
+                "extra_host_languages": [],
+                "id": 9377049,
+                "instant_bookable": false,
+                "is_business_travel_ready": false,
+                "is_family_preferred": false,
+                "is_new_listing": false,
+                "lat": 37.57435868852241,
+                "listing_tags": [],
+                "lng": 127.01122846974404,
+                "localized_city": "\uc885\ub85c\uad6c",
+                "name": "\u3141",
+                "neighborhood": "Dongdaemun Market",
+                "person_capacity": 6,
+                "picture_count": 1,
+                "picture_url": "https://a0.muscache.com/im/pictures/b5fa18e9-8442-43c2-82ad-51da837b0ed2.jpg?aki_policy=large",
+                "primary_host": {
+                    "first_name": "Jonghwa",
+                    "has_profile_pic": true,
+                    "id": 25059268,
+                    "picture_url": "https://a0.muscache.com/im/users/25059268/profile_pic/1443695653/original.jpg?aki_policy=profile_x_medium",
+                    "smart_name": "Jonghwa",
+                    "thumbnail_url": "https://a0.muscache.com/im/users/25059268/profile_pic/1443695653/original.jpg?aki_policy=profile_small",
+                    "is_superhost": false
+                },
+                "property_type": "B&B",
+                "property_type_id": 3,
+                "public_address": "\uc885\ub85c\uad6c, \uc11c\uc6b8, \ud55c\uad6d",
+                "reviews_count": 0,
+                "room_type": "\uc9d1 \uc804\uccb4",
+                "room_type_category": "entire_home",
+                "scrim_color": "#06070B",
+                "star_rating": null,
+                "thumbnail_url": "https://a0.muscache.com/im/pictures/b5fa18e9-8442-43c2-82ad-51da837b0ed2.jpg?aki_policy=small",
+                "user": {
+                    "first_name": "Jonghwa",
+                    "has_profile_pic": true,
+                    "id": 25059268,
+                    "picture_url": "https://a0.muscache.com/im/users/25059268/profile_pic/1443695653/original.jpg?aki_policy=profile_x_medium",
+                    "smart_name": "Jonghwa",
+                    "thumbnail_url": "https://a0.muscache.com/im/users/25059268/profile_pic/1443695653/original.jpg?aki_policy=profile_small",
+                    "is_superhost": false
+                },
+                "user_id": 25059268,
+                "xl_picture_url": "https://a0.muscache.com/im/pictures/b5fa18e9-8442-43c2-82ad-51da837b0ed2.jpg?aki_policy=x_large",
+                "preview_encoded_png": "iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAO0lEQVQIHQEwAM//ASQsVBsjN/f17fr5+Pr88AEaHzMIChQA/gIBAvwGDA8BHyUuAwAD/P3++fv6+Pj140YVu4p6Z7AAAAAASUVORK5CYII=",
+                "picture_urls": [
+                    "https://a0.muscache.com/im/pictures/b5fa18e9-8442-43c2-82ad-51da837b0ed2.jpg?aki_policy=large"
+                ],
+                "xl_picture_urls": [
+                    "https://a0.muscache.com/im/pictures/b5fa18e9-8442-43c2-82ad-51da837b0ed2.jpg?aki_policy=x_large"
+                ]
+            },
+            "pricing_quote": {
+                "available": false,
+                "can_instant_book": false,
+                "check_in": null,
+                "check_out": null,
+                "guests": 2,
+                "guest_details": {
+                    "number_of_adults": 2,
+                    "number_of_children": 0,
+                    "number_of_infants": 0
+                },
+                "long_term_discount_amount_as_guest": 0,
+                "monthly_price_factor": null,
+                "price": null,
+                "rate": {
+                    "amount": 10473,
+                    "amount_formatted": "\u20a910473",
+                    "is_micros_accuracy": null,
+                    "currency": "KRW"
+                },
+                "rate_type": "nightly",
+                "rate_with_service_fee": {
+                    "amount": 10473,
+                    "amount_formatted": "\u20a910473",
+                    "is_micros_accuracy": null,
+                    "currency": "KRW"
+                },
+                "weekly_price_factor": null
+            },
+            "viewed_at": null
+        }
+    ],
+    "metadata": {
+        "geography": {
+            "accuracy": 9,
+            "precision": "building",
+            "country_code": "KR",
+            "country": "South Korea",
+            "result_type": "premise",
+            "state_short": null,
+            "state": null,
+            "city": null,
+            "lat": 37.5310757,
+            "lng": 126.9938223,
+            "place_id": "ChIJKYJIrjWifDURo-HwVatal1o"
+        },
+        "guidebook": null,
+        "search": {
+            "business_travel_reward_data": {},
+            "business_travel_ready_data": {
+                "filter_criteria": {},
+                "show_btr_upsell": false
+            },
+            "is_business_travel_verified": false,
+            "is_last_minute_eligible": false,
+            "last_minute_show_dist_sort": false,
+            "mobile_session_id": "1JN7RVPu",
+            "native_currency": "KRW",
+            "price_type": "nightly",
+            "price_range_max_native": 1000000,
+            "price_range_min_native": 11000,
+            "search_id": "f62d3ec9-1952-4485-992a-083c4c51362d"
+        },
+        "pagination": {
+            "next_offset": 2,
+            "result_count": 2
+        },
+        "facets": {
+            "availability": [
+                {
+                    "key": "Instant Book",
+                    "value": "\uc989\uc2dc \uc608\uc57d",
+                    "count": 1
+                }
+            ],
+            "room_type": [
+                {
+                    "key": "Entire home/apt",
+                    "value": "\uc9d1 \uc804\uccb4",
+                    "count": 2
+                },
+                {
+                    "key": "Private room",
+                    "value": "\uac1c\uc778\uc2e4",
+                    "count": null
+                },
+                {
+                    "key": "Shared room",
+                    "value": "\ub2e4\uc778\uc2e4",
+                    "count": null
+                }
+            ],
+            "hosting_amenity_ids": [
+                {
+                    "key": 8,
+                    "value": "\ubd80\uc5cc",
+                    "count": 1
+                },
+                {
+                    "key": 1,
+                    "value": "TV",
+                    "count": 1
+                },
+                {
+                    "key": 40,
+                    "value": "\ud544\uc218\ud488\ubaa9",
+                    "count": 1
+                },
+                {
+                    "key": 30,
+                    "value": "\ub09c\ubc29",
+                    "count": 1
+                },
+                {
+                    "key": 5,
+                    "value": "\uc5d0\uc5b4\ucee8",
+                    "count": 2
+                },
+                {
+                    "key": 33,
+                    "value": "\uc138\ud0c1\uae30",
+                    "count": 2
+                },
+                {
+                    "key": 9,
+                    "value": "\uac74\ubb3c \ub0b4 \ubb34\ub8cc \uc8fc\ucc28",
+                    "count": 1
+                },
+                {
+                    "key": 2,
+                    "value": "\ucf00\uc774\ube14 TV",
+                    "count": 1
+                },
+                {
+                    "key": 12,
+                    "value": "\ubc18\ub824\ub3d9\ubb3c \uc785\uc2e4 \uac00\ub2a5",
+                    "count": 1
+                },
+                {
+                    "key": 44,
+                    "value": "\uc637\uac78\uc774",
+                    "count": 1
+                },
+                {
+                    "key": 46,
+                    "value": "\ub2e4\ub9ac\ubbf8",
+                    "count": 1
+                },
+                {
+                    "key": 45,
+                    "value": "\ud5e4\uc5b4 \ub4dc\ub77c\uc774\uae30",
+                    "count": 1
+                },
+                {
+                    "key": 35,
+                    "value": "\ud654\uc7ac \uac10\uc9c0\uae30",
+                    "count": 1
+                },
+                {
+                    "key": 36,
+                    "value": "\uc77c\uc0b0\ud654\ud0c4\uc18c \uac10\uc9c0\uae30",
+                    "count": 1
+                },
+                {
+                    "key": 58,
+                    "value": "TV",
+                    "count": 1
+                }
+            ],
+            "top_amenities": [
+                {
+                    "key": 8,
+                    "value": "\ubd80\uc5cc",
+                    "count": 1
+                },
+                {
+                    "key": 1,
+                    "value": "TV",
+                    "count": 1
+                },
+                {
+                    "key": 40,
+                    "value": "\ud544\uc218\ud488\ubaa9",
+                    "count": 1
+                }
+            ],
+            "facilities_amenities": [
+                {
+                    "key": 9,
+                    "value": "\uac74\ubb3c \ub0b4 \ubb34\ub8cc \uc8fc\ucc28",
+                    "count": 1
+                }
+            ],
+            "house_rules_amenities": [
+                {
+                    "key": 12,
+                    "value": "\ubc18\ub824\ub3d9\ubb3c \uc785\uc2e4 \uac00\ub2a5",
+                    "count": 1
+                }
+            ],
+            "other_amenities": [
+                {
+                    "key": 8,
+                    "value": "\ubd80\uc5cc",
+                    "count": 1
+                },
+                {
+                    "key": 1,
+                    "value": "TV",
+                    "count": 1
+                },
+                {
+                    "key": 30,
+                    "value": "\ub09c\ubc29",
+                    "count": 1
+                },
+                {
+                    "key": 5,
+                    "value": "\uc5d0\uc5b4\ucee8",
+                    "count": 2
+                },
+                {
+                    "key": 33,
+                    "value": "\uc138\ud0c1\uae30",
+                    "count": 2
+                },
+                {
+                    "key": 2,
+                    "value": "\ucf00\uc774\ube14 TV",
+                    "count": 1
+                },
+                {
+                    "key": 44,
+                    "value": "\uc637\uac78\uc774",
+                    "count": 1
+                },
+                {
+                    "key": 46,
+                    "value": "\ub2e4\ub9ac\ubbf8",
+                    "count": 1
+                },
+                {
+                    "key": 45,
+                    "value": "\ud5e4\uc5b4 \ub4dc\ub77c\uc774\uae30",
+                    "count": 1
+                },
+                {
+                    "key": 58,
+                    "value": "TV",
+                    "count": 1
+                }
+            ],
+            "top_other_amenities": [
+                {
+                    "key": 1,
+                    "value": "TV",
+                    "count": 1
+                },
+                {
+                    "key": 58,
+                    "value": "TV",
+                    "count": 1
+                },
+                {
+                    "key": 8,
+                    "value": "\ubd80\uc5cc",
+                    "count": 1
+                },
+                {
+                    "key": 30,
+                    "value": "\ub09c\ubc29",
+                    "count": 1
+                }
+            ]
+        },
+        "listing_tags": {},
+        "listings_count": 2,
+        "urgency_commitment": {
+            "message": {
+                "headline": null,
+                "body": null,
+                "contextual_message": null
+            },
+            "message_type": null,
+            "show_percent_listings_left_message": false,
+            "listings_left_as_percent": null
+        },
+        "golden_ticket_urgency_commitment": {
+            "message": {
+                "headline": null,
+                "body": null,
+                "contextual_message": null,
+                "visualization_data": null,
+                "gt_modal_headline": null,
+                "gt_modal_body": null
+            },
+            "message_type": null,
+            "show_percent_listings_left_message": false,
+            "listings_left_as_percent": null
+        },
+        "market_info": {
+            "headline": "",
+            "body": "",
+            "data": []
+        },
+        "price_histogram": {
+            "average_price": 73021,
+            "histogram": [
+                8,
+                2,
+                0,
+                5,
+                20,
+                103,
+                197,
+                560,
+                706,
+                1147,
+                1112,
+                1319,
+                1098,
+                926,
+                543,
+                425,
+                311,
+                183,
+                202,
+                91,
+                123,
+                91,
+                57,
+                76,
+                63,
+                40,
+                44,
+                42,
+                13,
+                30,
+                9,
+                18,
+                4,
+                8,
+                7,
+                6,
+                4,
+                10,
+                3,
+                1,
+                1,
+                3,
+                0,
+                0,
+                3,
+                0,
+                2,
+                2,
+                1,
+                18
+            ]
+        },
+        "search_feed_items": [],
+        "avg_price_by_room_type": {
+            "ratio": {
+                "Entire home/apt": 1.0,
+                "Private room": 0.0,
+                "Shared room": 0.0
+            },
+            "avg_price": {
+                "Entire home/apt": 4
+            }
+        },
+        "messages": {},
+        "overrides": {},
+        "breadcrumbs": [
+            {
+                "location_name": "\ud55c\uad6d",
+                "canonical_location_name": "\ud55c\uad6d",
+                "type": "country"
+            }
+        ],
+        "guided_search": {
+            "avg_gbm_score": 68.9958610534668,
+            "avg_usd_price": 4.5,
+            "min_stars": 4.0,
+            "min_review_count": 5.0
+        },
+        "location": {
+            "canonical_location": "\ud55c\uad6d",
+            "display_location": "\ud55c\uad6d"
+        },
+        "remarketing_ids": [
+            12388544,
+            11107376
+        ]
+    }
+}
