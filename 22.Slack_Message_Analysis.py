@@ -3,6 +3,7 @@ from datetime import datetime
 import urllib
 import time
 import JsonHandler
+import Record as r
 import pprint as p
 import io
 
@@ -85,17 +86,7 @@ def get_channel_history(channel):
 
     return channel_messages_dict
 
-class r: # 시간 기록 클래스. r.start()와 r.end()를 활용. 여러 개의 시간 기록들을 이용할 경우, 기록인자.r.start()와 기록인자.r.end() 이용
-    # 특정 기록인자 없이 그저 기록
-    def start():
-        global t
-        t = datetime.now()
-        return t
 
-    def end():
-        end = datetime.now()
-        d = end - t
-        print ("Duration : " + str(d))
 
 class run: # 돌려봤거나 돌려볼만한 실행 함수들 모아두는 곳. 위 메서드들을 활용한 것들. 여기 있는 것만 잘 활용해서 돌려도 웬만한 값들은 구하는 느낌
     # A채널에 B유저의 메시지 모두 가져오기
