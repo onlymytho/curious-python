@@ -175,11 +175,28 @@ class super_host:
         return super_host
 
 class business_travel:
-    # is_business_travel_ready을 활용해서 비즈니스 여행객들을 받기에 경쟁력이 있는 지역인지?
+    # is_business_travel_ready을 활용해서 비즈니스 여행객들을 받기에 경쟁력이 있는 지역인지
+    def get():
+        business_travel = []
+        for l in listings:
+            bt = (l['listing'].get('is_business_travel_ready'))
+            if bt:
+                business_travel.append(bt)
+            elif not bt:
+                pass
+        return business_travel
 
 class family_preferred:
-    # is_family_preferred을 활용해서 비즈니스 여행객들을 받기에 경쟁력이 있는 지역인지?
-
+    # is_family_preferred을 활용해서 가족 여행객들을 받기에 경쟁력이 있는 지역인지
+    def get():
+        family_preferred = []
+        for l in listings:
+            fp = (l['listing'].get('is_family_preferred'))
+            if fp:
+                family_preferred.append(fp)
+            elif not fp:
+                pass
+        return family_preferred
 class cal:
     def sum(dict):
         sum = 0
@@ -247,9 +264,17 @@ class run:
         print ("슈퍼호스트 수 : " + str(len(super_host.get())))
         print ("슈퍼호스트 비율 : " + str(len(super_host.get())/len(price.get())*100) + '%')
 
+    def analysis_business_travel():
+        print ('\n== BUSINESS_TRAVEL ANALYSIS ===')
+        print ("비즈니스 여행객을 위한 리스팅 수 : " + str(len(business_travel.get())))
+        print ("비즈니스 여행객을 위한 리스팅 비율 : " + str(len(business_travel.get())/len(price.get())*100) + '%')
 
+    def analysis_family_preferred():
+        print ('\n== FAMILY_PREFERRED ANALYSIS ===')
+        print ("가족 여행객을 선호하는 리스팅 수 : " + str(len(family_preferred.get())))
+        print ("가족 여행객을 선호하는 리스팅 비율 : " + str(len(family_preferred.get())/len(price.get())*100) + '%')
 
-listings = get_listing.getneighbors(location='16-7, Seongmisan-ro 3na-gil, Seoul', price_min=1, price_max=200)
+listings = get_listing.getneighbors(location='16-7, Seongmisan-ro 3na-gil, Seoul', price_min=1, price_max=10)
 # Yeonnam-22
 # 16-7, Seongmisan-ro 3na-gil, Seoul
 
@@ -258,3 +283,5 @@ listings = get_listing.getneighbors(location='16-7, Seongmisan-ro 3na-gil, Seoul
 run.analysis_price()
 run.analysis_room_type()
 run.analysis_super_host()
+run.analysis_business_travel()
+run.analysis_family_preferred()
