@@ -10,8 +10,8 @@ import pprint as p
 import numpy
 import Record as r
 from collections import Counter
-from tornado.httpclient import AsyncHTTPClient
 from threading import Thread
+from geopy.distance import vincenty
 
 
 # auth 파일에서 airbnb_my_user_api_key 받아오기
@@ -63,23 +63,24 @@ class get_listing:
                          '&user_lng='+str(user_lng)
                          )
 
-        print (r)
+#        print (r)
 
         datadict = r.json()
         datajson = json.dumps(datadict, indent=4)
         # print (datajson)
-        now = datetime.now()
-        with io.open('data/airbnb_listings/airbnb_listings'+' '+str(now)+'.json', 'w', encoding='utf-8') as f:
-          f.write(datajson)
-
-        listings = JsonHandler.JsonHandler.OpenJsonFileConvertToDict('data/airbnb_listings/airbnb_listings'+' '+str(now)+'.json')['search_results']
+        # now = datetime.now()
+        # with io.open('data/airbnb_listings/airbnb_listings'+' '+str(now)+'.json', 'w', encoding='utf-8') as f:
+        #   f.write(datajson)
+        #
+        # listings = JsonHandler.JsonHandler.OpenJsonFileConvertToDict('data/airbnb_listings/airbnb_listings'+' '+str(now)+'.json')['search_results']
+        listings = datadict['search_results']
         return listings
 
     def getneighbors(location, price_min=1, price_max=500, price_step=4):
         ids = []
         neighbors = []
         for price in range(price_min, price_max, price_step):
-            r.start()
+            # r.start()
             listings = get_listing.getlistings(location, price_max=str(price+price_step), price_min=str(price))
             for l in listings:
                 id = l['listing'].get('id')
@@ -88,10 +89,10 @@ class get_listing:
                 else:
                     ids.append(id)
                     neighbors.append(l)
-                    print (l['pricing_quote']['rate'].get('amount_formatted'))
-            r.end()
-            r.end('main_record')
-            print (str(price)+'/'+str(price_max))
+                    # print (l['pricing_quote']['rate'].get('amount_formatted'))
+            # r.end()
+            # r.end('main_record')
+            # print (str(price)+'/'+str(price_max))
 
         return neighbors
 
@@ -214,6 +215,56 @@ class language:
                 extra_host_languages.append(lang)
         return extra_host_languages
 
+class location:
+    locations = {}
+    diff = []
+    my_locations = {}
+
+    def my():
+        global locations
+        global my_locations
+        r = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address='+search_location)
+        rjson = r.json()
+        locations = {}
+        my_locations = rjson['results'][0]['geometry']['location']
+
+    def get():
+        global locations
+        for l in listings:
+            id = (l['listing'].get('id'))
+            lat = (l['listing'].get('lat'))
+            lng = (l['listing'].get('lng'))
+            locations[str(id)] = {'lat':lat, 'lng':lng}
+
+    def diff():
+        global locations
+        global diff
+        global my_locations
+        diff = []
+        my_locations = (my_locations['lat'], my_locations['lng'])
+        for loc in locations.values():
+            loc = (loc['lat'], loc['lng'])
+            d = vincenty(my_locations, loc).meters
+            diff.append(d)
+
+    def closer(distance):
+        global diff
+        closer = []
+        for d in diff:
+            if d < distance:
+                closer.append(d)
+            else:
+                pass
+        return closer
+
+    def exec_closer(distance):
+        location.my()
+        location.get()
+        location.diff()
+        closer = location.closer(distance)
+        return closer
+
+
 class cal:
     '''연산 클래스. 다른 함수들을 위한 연산에 사용'''
     def sum(dict):
@@ -308,40 +359,68 @@ class run:
         print ("가족 여행객을 선호하는 리스팅 비율 : " + str(round(len(family_preferred.get())/len(price.get())*100, 1)) + '%')
 
     def analysis_extra_host_languages():
-        print ('\n=== FAMILY_PREFERRED ANALYSIS ===')
+        print ('\n=== EXTRA_HOST_LANGUAGES ANALYSIS ===')
         print ("호스트 언어 : ")
         keys = list(Counter(language.get()).keys())
         values = list(Counter(language.get()).values())
         for num in range(0, len(keys)):
             print ('\t' + str(keys[num]) + ' : ' + str(values[num]) + ' (' + str(round((values[num]/len(price.get()))*100, 1)) + '%)')
 
+    def analysis_location():
+        print ('\n=== LISTINGS_LOCATION ANALYSIS ===')
+        print ("10m 이내의 리스팅 개수 : " + str(len(location.exec_closer(10))))
+        print ("20m 이내의 리스팅 개수 : " + str(len(location.exec_closer(20))))
+        print ("50m 이내의 리스팅 개수 : " + str(len(location.exec_closer(50))))
+        print ("100m 이내의 리스팅 개수 : " + str(len(location.exec_closer(100))))
+        print ("200m 이내의 리스팅 개수 : " + str(len(location.exec_closer(200))))
+        print ("500m 이내의 리스팅 개수 : " + str(len(location.exec_closer(500))))
+        print ("1km 이내의 리스팅 개수 : " + str(len(location.exec_closer(1000))))
+        print ("1.5km 이내의 리스팅 개수 : " + str(len(location.exec_closer(1500))))
+        print ("2km 이내의 리스팅 개수 : " + str(len(location.exec_closer(2000))))
+        print ("3km 이내의 리스팅 개수 : " + str(len(location.exec_closer(3000))))
+        print ("5km 이내의 리스팅 개수 : " + str(len(location.exec_closer(5000))))
+        print ("10km 이내의 리스팅 개수 : " + str(len(location.exec_closer(10000))))
+        print ("50km 이내의 리스팅 개수 : " + str(len(location.exec_closer(50000))))
+
+
 
 
 if __name__ == '__main__':
+    print ("*** Before Airbnb **********\n주변 에어비엔비를 분석해서 당신의 에어비엔비가 경쟁력을 가질 수 있는 방법을 알려드립니다.")
+    search_location = input("검색할 주소를 입력해주세요 : ")
+
     r.start('main_record')
-    incremental_search = {'price_min': [1,5,20,100,200,300],
-                          'price_max': [5,20,100,200,300,1000],
-                          'price_step':[1,2,10,20,50,100]
+    incremental_search = {'price_min': [1,5,10,15,20,25,30,35,40,45,50,100,200,350,500],
+                          'price_max': [5,10,15,20,25,30,35,40,45,50,100,200,350,500,1000],
+                          'price_step':[1,1,1,1,1,1,1,1,1,1,10,20,30,30,100]
                           }
     # -- INCREMENTAL_SEARCH ACCURACY & SPEED TEST --
     #
     # *** TEST *****
-    # price_ranges                        / price_steps       : listing_count / processing_time
-    # [TEST #1] 1,10,200,300,1000         / 1,10,30,50        : 185개 / 75초,
-    # [TEST #2] 1,20,300,1000             / 1,30,100          : 168개 / 59초,
-    # [TEST #3] 1,20,200,300,1000         / 1,10,30,100       : 186개 / 85초,
-    # [TEST #4] 1,5,20,200,300,1000       / 1,2,10,30,100     : 237개 / 64초,
-    # [TEST #5] 1,5,20,100,200,300,1000   / 1,2,10,20,50,100  : 257개 / 64초,
-    # [TEST #6] 1,5,20,100,200,300,1000   / 1,2,10,20,30,100  : 254개 / 74초
+    # price_ranges                                                          / price_steps                           : listing_count / processing_time
+    # [TEST #A-1] 1,10,200,300,1000                                         / 1,10,30,50                            : 185개 / 75초,
+    # [TEST #A-2] 1,20,300,1000                                             / 1,30,100                              : 168개 / 59초,
+    # [TEST #A-3] 1,20,200,300,1000                                         / 1,10,30,100                           : 186개 / 85초,
+    # [TEST #A-4] 1,5,20,200,300,1000                                       / 1,2,10,30,100                         : 237개 / 64초,
+    # [TEST #A-5] 1,5,20,100,200,300,1000                                   / 1,2,10,20,50,100                      : 257개 / 64초,
+    # [TEST #A-6] 1,5,20,100,200,300,1000                                   / 1,2,10,20,30,100                      : 254개 / 74초,
+    # [TEST #B-1] 1,5,10,20,50,100,200,500,1000                             / 1,1,2,5,10,20,60,100                  : 354개 / 11초,
+    # [TEST #B-2] 구간 12개 : 1,5,10,15,20,25,35,50,100,200,500,1000                    / 1,1,1,1,1,2,5,10,20,60,100            : 508개 / 10초,
+    # [TEST #B-3] 구간 14개 : 1,5,10,15,20,25,30,35,40,50,100,200,500,1000              / 1,1,1,1,1,1,1,2,5,10,20,60,100        : 618개 / 10초,
+    # [TEST #B-4] 구간 16개 : 1,5,10,15,20,25,30,35,40,45,50,100,200,350,500,1000       / 1,1,1,1,1,1,1,1,1,1,10,20,30,30,100   : 686개 / 10초
     #
     # *** RESULT *****
-    # [TEST #5]의 성적이 가장 좋았음. 정확도가 가장 좋았기 때문
+    # A
+    # [TEST #A-5]의 성적이 가장 좋았음. 정확도가 가장 좋았기 때문
     # processing_time은 인터넷 상태에 따라 계속 달라지는 경향이 있어서, 판단 기준으로 삼기 힘드므로 결과 해석에 대한 정성적인 판단이 필요함.
+    # B
+    #
     #
     # *** COMMENT *****
     # incremental_search를 도입하기 전, 아래와 같이 한 가지 검색으로만 돌렸을 때는 약 5분 이상 걸렸었음.
     # listings = get_listing.getneighbors(location='연남로 22길', price_min=1, price_max=1000, price_step=4)
-    #
+    # TEST #A는 쓰레드 적용 전.
+    # TEST #B는 쓰레드 적용 후.
     # -- END --
 
     listings = []
@@ -349,8 +428,9 @@ if __name__ == '__main__':
     for n in range(len(incremental_search['price_min'])):
         def getlistingthread():
             global listings
+            global search_location
             l = get_listing.getneighbors(
-                location='연남로 22길',
+                location=search_location,
                 price_min=incremental_search['price_min'][n],
                 price_max=incremental_search['price_max'][n],
                 price_step=incremental_search['price_step'][n])
@@ -364,9 +444,9 @@ if __name__ == '__main__':
         threads[n].join()
     # Thread TEST
     # incremental_search의 각 구간들을 활용해서 여러 쓰레드로 돌림.
-    # 결과 : 위 [TEST #5]형태로 돌린 결과, '246개 / 17초' 로 완료. 즉, 약 70%이상의 시간 단축.
+    # 결과 : 위 [TEST #5]형태로 돌린 결과, '246개 / 17초' 로 완료. 즉, 약 70%이상의 시간 단축. (처음에 비해 95%시간 단축 = 20배 속도 증가)
 
-    # Yeonnam-22
+    # 연남로 3길 22-18
     # 16-7, Seongmisan-ro 3na-gil, Seoul
 
 
@@ -378,4 +458,5 @@ if __name__ == '__main__':
     run.analysis_business_travel()
     run.analysis_family_preferred()
     run.analysis_extra_host_languages()
+    run.analysis_location()
     r.end('main_record')
