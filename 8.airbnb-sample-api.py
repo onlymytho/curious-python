@@ -11,6 +11,7 @@ import numpy
 import Record as r
 from collections import Counter
 from tornado.httpclient import AsyncHTTPClient
+from threading import Thread
 
 
 # auth 파일에서 airbnb_my_user_api_key 받아오기
@@ -344,14 +345,30 @@ if __name__ == '__main__':
     # -- END --
 
     listings = []
+    threads = []
     for n in range(len(incremental_search['price_min'])):
-        listings = listings + get_listing.getneighbors(
-            location='연남로 22길',
-            price_min=incremental_search['price_min'][n],
-            price_max=incremental_search['price_max'][n],
-            price_step=incremental_search['price_step'][n])
+        def getlistingthread():
+            global listings
+            l = get_listing.getneighbors(
+                location='연남로 22길',
+                price_min=incremental_search['price_min'][n],
+                price_max=incremental_search['price_max'][n],
+                price_step=incremental_search['price_step'][n])
+            listings = listings + l
+
+        threads.append(Thread(target=getlistingthread))
+        threads[n].daemon = True
+        threads[n].start()
+
+    for n in range(len(incremental_search['price_min'])):
+        threads[n].join()
+    # Thread TEST
+    # incremental_search의 각 구간들을 활용해서 여러 쓰레드로 돌림.
+    # 결과 : 위 [TEST #5]형태로 돌린 결과, '246개 / 17초' 로 완료. 즉, 약 70%이상의 시간 단축.
+
     # Yeonnam-22
     # 16-7, Seongmisan-ro 3na-gil, Seoul
+
 
     # run.analysis_title()
     # run.analysis_price()
