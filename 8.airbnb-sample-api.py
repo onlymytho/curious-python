@@ -56,14 +56,14 @@ class get_listing:
                          '&min_bedrooms='+str(min_bathrooms)+
                          '&min_beds='+str(min_beds)+
                          '&min_num_pic_urls='+str(min_num_pic_urls)+
-                         '&price_max=1000'+str(price_max)+
+                         '&price_max='+str(price_max)+
                          '&price_min='+str(price_min)+
                          '&sort='+str(sort)+
                          '&user_lat='+str(user_lat)+
                          '&user_lng='+str(user_lng)
                          )
 
-#        print (r)
+        print (r)
 
         datadict = r.json()
         datajson = json.dumps(datadict, indent=4)
@@ -80,7 +80,7 @@ class get_listing:
         ids = []
         neighbors = []
         for price in range(price_min, price_max, price_step):
-            # r.start()
+            r.start()
             listings = get_listing.getlistings(location, price_max=str(price+price_step), price_min=str(price))
             for l in listings:
                 id = l['listing'].get('id')
@@ -89,9 +89,10 @@ class get_listing:
                 else:
                     ids.append(id)
                     neighbors.append(l)
+            print (len(neighbors))
                     # print (l['pricing_quote']['rate'].get('amount_formatted'))
-            # r.end()
-            # r.end('main_record')
+            r.end()
+            r.end('main_record')
             # print (str(price)+'/'+str(price_max))
 
         return neighbors
@@ -386,14 +387,15 @@ class run:
 
 
 if __name__ == '__main__':
-    print ("*** Before Airbnb **********\n주변 에어비엔비를 분석해서 당신의 에어비엔비가 경쟁력을 가질 수 있는 방법을 알려드립니다.")
+    print ("*** Before Airbnb **********\n주변 에어비엔비를 분석해서 당신의 에어비엔비가 경쟁력을 가질 수 있는지 알려드립니다.")
     search_location = input("검색할 주소를 입력해주세요 : ")
 
     r.start('main_record')
-    incremental_search = {'price_min': [1,5,10,15,20,25,30,35,40,45,50,100,200,350,500],
-                          'price_max': [5,10,15,20,25,30,35,40,45,50,100,200,350,500,1000],
-                          'price_step':[1,1,1,1,1,1,1,1,1,1,10,20,30,30,100]
+    incremental_search = {'price_min': [1,3,6,9,12,15,18,21,24,27,30,60,120,210,330,480],
+                          'price_max': [3,6,9,12,15,18,21,24,27,30,60,120,210,330,480,1000],
+                          'price_step':[1,1,1,1,1,1,1,1,1,1,10,20,30,40,50,100]
                           }
+
     # -- INCREMENTAL_SEARCH ACCURACY & SPEED TEST --
     #
     # *** TEST *****
@@ -408,6 +410,7 @@ if __name__ == '__main__':
     # [TEST #B-2] 구간 12개 : 1,5,10,15,20,25,35,50,100,200,500,1000                    / 1,1,1,1,1,2,5,10,20,60,100            : 508개 / 10초,
     # [TEST #B-3] 구간 14개 : 1,5,10,15,20,25,30,35,40,50,100,200,500,1000              / 1,1,1,1,1,1,1,2,5,10,20,60,100        : 618개 / 10초,
     # [TEST #B-4] 구간 16개 : 1,5,10,15,20,25,30,35,40,45,50,100,200,350,500,1000       / 1,1,1,1,1,1,1,1,1,1,10,20,30,30,100   : 686개 / 10초
+    # [TEST #B-5] 구간 17개 : 1,3,6,9,12,15,18,21,24,27,30,60,120,210,330,480,1000       / 1,1,1,1,1,1,1,1,1,1,1,10,20,30,40,50,100   : 864개 / 12초 (거리 계산하는데 시간이 좀 걸렸음)
     #
     # *** RESULT *****
     # A
@@ -452,6 +455,7 @@ if __name__ == '__main__':
 
     # run.analysis_title()
     # run.analysis_price()
+
     run.analysis_price()
     run.analysis_room_type()
     run.analysis_super_host()

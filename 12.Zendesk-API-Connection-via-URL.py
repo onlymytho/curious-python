@@ -8,11 +8,11 @@ from JsonHandler import JsonHandler
 import io
 from datetime import datetime
 
-CONFIG_FILE="./testers_tickets.json"
+CONFIG_FILE="./data/testers_tickets/testers_tickets.json"
 
 
 
-testers_tickets = JsonHandler.FileOpenDict(CONFIG_FILE)
+testers_tickets = JsonHandler.OpenJsonFileConvertToDict(CONFIG_FILE)
 
 a = ''
 for results in testers_tickets['results']:
@@ -23,7 +23,7 @@ for results in testers_tickets['results']:
 
 print ('\nFinished parsing.')
 
-export_file_name = 'testers_tickets/testers_tickets'+' '+str(datetime.now())+'.csv'
+export_file_name = 'data/testers_tickets/testers_tickets'+' '+str(datetime.now())+'.csv'
 with io.open(export_file_name, 'w', encoding='utf-8') as f:
   f.write(a)
 

@@ -2,7 +2,7 @@
 from datetime import datetime
 import urllib
 import time
-import JsonHandler
+from JsonHandler import JsonHandler
 import Record as r
 import pprint as p
 import io
@@ -25,7 +25,7 @@ def get_channel_list(args='name', channel_id=None):
     # args are in [all, name, id]
     method = 'https://slack.com/api/channels.list?'
     url = setURL(method)
-    channel_dict = JsonHandler.JsonHandler.URLParserJsonDict(url)
+    channel_dict = JsonHandler.URLParserJsonDict(url)
     channel_info = []
 
     for channels in channel_dict['channels']:
@@ -50,7 +50,7 @@ def get_user_list(args='name'):
     # It returns the names of user list as Dict type.
     method = 'https://slack.com/api/users.list?'
     url = setURL(method)
-    user_dict = JsonHandler.JsonHandler.URLParserJsonDict(url)
+    user_dict = JsonHandler.URLParserJsonDict(url)
     user_info = []
     for user in user_dict['members']:
         if user.get('is_bot'):
@@ -75,12 +75,12 @@ def get_channel_history(channel):
         channel_and_message_list = {}
         for channel_id in channel_id_list:
             url = setURL(method) + '&channel=' + channel_id
-            channel_messages_dict = JsonHandler.JsonHandler.URLParserJson(url)
+            channel_messages_dict = JsonHandler.URLParserJson(url)
             channel_and_message_list[channel_id] = channel_messages_dict
         channel_messages_dict = channel_and_message_list
     elif type(channel) is str:
         url = setURL(method) + '&channel=' + channel
-        channel_messages_dict = JsonHandler.JsonHandler.URLParserJsonDict(url)
+        channel_messages_dict = JsonHandler.URLParserJsonDict(url)
     else:
         print ("Insert channel_id or 'all' as parameter of get_channel_history(channel) method.")
 
@@ -107,6 +107,7 @@ class run: # 돌려봤거나 돌려볼만한 실행 함수들 모아두는 곳. 
         print ("\n\n\n\n\nMESSAGES FROM SURYEON_KIM")
         p.pprint (user2_messages)
         r.end()
+    
 
     # 모든 유저 목록 가져오기
     def bring_all_user_id():

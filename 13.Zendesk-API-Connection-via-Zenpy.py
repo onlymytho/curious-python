@@ -18,5 +18,5 @@ today = datetime.datetime.now()
 
 test_start_day = '2017-03-09'
 
-for ticket in zenpy_client.search("tags:testers created_at>2017-03-09", type='ticket'):
+for ticket in zenpy_client.search("tags:testers created_at>2017-04-13", type='ticket'):
     print (ticket.description)
