@@ -1,0 +1,5 @@
+{% for singleuser in users %}
+        <ul>
+            <li><a href="profile/{{ singleuser.username }}">{{ singleuser.username }}</a> : {{ singleuser.email }}</li>
+        </ul>
+{% endfor %}

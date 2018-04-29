@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="add_user_details" method="post">
+        <label>Username: </label>
+        <input id="username" type="text" name="username" value="">
+        <br>
+        <label>Profile pic: </label>
+        <input id="profile_pic" type="text" name="profile_pic" value="">
+        <br>
+        <label>Location: </label>
+        <input id="location" type="text" name="location" value="">
+        <br>
+
+        <input id="pid" type="hidden" name="pid" value="{{ now_user.id }}">
+        <button type="submit" name="button">Done</button>
+        <br>
+    </form>
+{% endblock %}

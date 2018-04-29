@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+<body>
+    {% block content %}
+        <h1>Welcome {{ now_user.email }}</h1>
+        <form action="add_post" method="post">
+            <label>Enter post here</label>
+            <input id="pcontent" type="text" name="pcontent" value="">
+            <input id="pemail" type="hidden" name="pemail" value="{{ now_user.email}}">
+            <button type="submit" name="button">Create a post</button>
+        </form>
+    {% endblock %}
+</body>

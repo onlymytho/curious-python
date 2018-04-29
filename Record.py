@@ -18,7 +18,7 @@ def start(*args):
     if args:
         for a in args:
             tracker[a] = datetime.now()
-            print ("'" + str(a) + "'" + " started at " + str(tracker[a]))
+            print ("\t\t\t\t[RECORD] START\t(" + str(a) + "):\t" + str(tracker[a]))
     else:
         t = datetime.now()
         return t
@@ -36,8 +36,8 @@ def end(*args):
         for a in args:
             end_time = datetime.now()
             d = end_time - tracker[a]
-            print ("Duration for " + "'" + str(a) + "'" +  " : " + str(d))
+            print ("\t\t\t\t[RECORD] END\t(" + str(a) + "):\t" + str(d))
     else:
         end = datetime.now()
         d = end - t
-        print ("Duration : " + str(d))
+        print ("\t\t\t\t[RECORD] END\t:" + str(d))

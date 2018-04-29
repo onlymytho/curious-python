@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        {% block body %}
+            {% for user in users %}
+                <h1>{{user.name}}</h1>
+                <h1>{{user.username}}</h1>
+                {% if user.username == 'onlymytho' %}
+                        <h1>Hello {{user.name}}</h1>
+                {% endif %}
+
+            {% endfor %}
+            <h1>Hello World</h1>in index.html
+        {% endblock %}
+    </body>
+</html>

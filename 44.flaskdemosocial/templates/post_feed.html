@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+<body>
+    {% block content %}
+        <h1>Post Feed page</h1>
+        <ul>
+            {% for singlePost in posts %}
+                <li><a href="">{{ singlePost.posted_by }} | {{ singlePost.post_content }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
